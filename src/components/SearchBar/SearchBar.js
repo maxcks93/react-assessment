@@ -1,0 +1,32 @@
+import React, { useState, useCallback } from "react";
+
+import './SearchBar.css';
+
+
+function SearchBar(props){
+
+    const [searchName, setSearchName] = useState('');
+
+    // Render the user input in the search bar when they are typing in or deleting
+    const handleSearchNameChange = useCallback((event)=>{
+        setSearchName(event.target.value);
+    },[])
+
+
+    const search = useCallback(()=>{
+        props.onSearch(searchName);
+    },[props.onSearch, searchName])
+
+    return (
+        <div className='SearchBar'>
+            <input 
+            placeholder= "Enter A Song Title"
+            onChange={handleSearchNameChange}/>
+            <button onClick={search}>
+                SEARCH
+            </button>
+        </div>
+    );
+}
+
+export default SearchBar;
