@@ -7,12 +7,13 @@ function SearchBar(props){
 
     const [searchName, setSearchName] = useState('');
 
-    // Render the user input in the search bar when they are typing in or deleting
+    // Render the user input in the search bar when user is inputting
     const handleSearchNameChange = useCallback((event)=>{
         setSearchName(event.target.value);
     },[])
 
-
+    // invoke the searchTrack function of the root component.
+    // the function will take in the State Hook, searchName as its argument
     const search = useCallback(()=>{
         props.onSearch(searchName);
     },[props.onSearch, searchName])

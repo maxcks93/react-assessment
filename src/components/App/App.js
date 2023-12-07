@@ -12,19 +12,19 @@ function App() {
     {
       id: 1,
       name: 'A Thousand Year',
-      altist: 'Christina Perri',
+      artist: 'Christina Perri',
       album: 'The Twilight Saga'
     },
     {
       id: 2,
       name: 'Baby',
-      altist: 'Justin Bieber',
+      artist: 'Justin Bieber',
       album: 'Baby'
     },
     {
       id: 3,
       name: 'My heart will go on',
-      altist: 'Christina Perri',
+      artist: 'Christina Perri',
       album: 'Titanic'
     }
   ];
@@ -48,7 +48,7 @@ function App() {
     <div className="App">
       <h1>Jammming</h1>
       <SearchBar onSearch={searchTrack}/>
-      <SearchResult />
+      <SearchResult searchResults={searchResults}/>
       <Playlist />
     </div>
   );
