@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResult from '../SearchResult/SearchResult';
-import Playlist from '../SearchResult/SearchResult';
+import Playlist from '../Playlist/Playlist';
 
 function App() {
 

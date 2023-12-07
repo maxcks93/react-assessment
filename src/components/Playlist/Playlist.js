@@ -7,6 +7,9 @@ function Playlist(){
     return (
         <div className='Playlist'>
             <Tracklist />
+            <button>
+                SAVE TO SPOTIFY
+            </button>
         </div>
     );
 }
