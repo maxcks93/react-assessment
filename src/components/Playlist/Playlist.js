@@ -7,7 +7,9 @@ function Playlist(props){
     return (
         <div className='Playlist'>
             <h2>{props.playlistName}</h2>
-            <Tracklist tracks={props.playlistTracks}/>
+            <Tracklist 
+            tracks={props.playlistTracks}
+            isSaved={true}/>
             <button>
                 SAVE TO SPOTIFY
             </button>

@@ -10,7 +10,9 @@ function Tracklist(props){
                 return(
                     <Track 
                     key={track.id}
-                    track={track}/>
+                    track={track}
+                    onAdd={props.onAdd}
+                    isSaved={props.isSaved}/>
                 );
             })}
         </div>
