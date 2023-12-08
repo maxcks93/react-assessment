@@ -80,6 +80,13 @@ function App() {
     };
   },[playlistTracks]);
 
+  // function to remove the track from the playlist
+  const removeTrack = useCallback((track)=>{
+    setPlaylistTracks((prevTracks) =>
+    prevTracks.filter((currentTrack) => currentTrack.id !== track.id)
+  );
+  },[]);
+
  // for testing purpose
  console.log(searchResults);
 
@@ -92,7 +99,8 @@ function App() {
       onAdd={addTrack}/>
       <Playlist 
       playlistName = {playlistName}
-      playlistTracks = {playlistTracks}/>
+      playlistTracks = {playlistTracks}
+      onRemove={removeTrack}/>
     </div>
   );
 }

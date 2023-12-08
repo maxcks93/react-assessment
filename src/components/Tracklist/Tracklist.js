@@ -12,7 +12,8 @@ function Tracklist(props){
                     key={track.id}
                     track={track}
                     onAdd={props.onAdd}
-                    isSaved={props.isSaved}/>
+                    isSaved={props.isSaved}
+                    onRemove={props.onRemove}/>
                 );
             })}
         </div>
