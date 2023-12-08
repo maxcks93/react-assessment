@@ -16,13 +16,15 @@ function SearchBar(props){
     // the function will take in the State Hook, searchName as its argument
     const search = useCallback(()=>{
         props.onSearch(searchName);
+        setSearchName('');
     },[props.onSearch, searchName])
 
     return (
         <div className='SearchBar'>
             <input 
             placeholder= "Enter A Song Title"
-            onChange={handleSearchNameChange}/>
+            onChange={handleSearchNameChange}
+            value={searchName}/>
             <button onClick={search}>
                 SEARCH
             </button>

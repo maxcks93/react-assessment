@@ -23,9 +23,26 @@ function App() {
     },
     {
       id: 3,
-      name: 'My heart will go on',
+      name: 'My Heart Will Go On',
       artist: 'Christina Perri',
       album: 'Titanic'
+    }
+  ];
+
+  const playlistName = 'Max Cks';
+
+  const playlistTracks = [
+    {
+      id: 1,
+      name: 'Yellow',
+      artist: 'Coldplay',
+      album: 'Parachutes'
+    },
+    {
+      id: 2,
+      name: 'Bad Day',
+      artist: 'Daniel Powter',
+      album: 'Daniel Powter'
     }
   ];
 
@@ -49,7 +66,9 @@ function App() {
       <h1>Jammming</h1>
       <SearchBar onSearch={searchTrack}/>
       <SearchResult searchResults={searchResults}/>
-      <Playlist />
+      <Playlist 
+      playlistName = {playlistName}
+      playlistTracks = {playlistTracks}/>
     </div>
   );
 }

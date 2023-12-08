@@ -2,11 +2,12 @@ import React from 'react';
 import './Playlist.css';
 import Tracklist from '../Tracklist/Tracklist';
 
-function Playlist(){
+function Playlist(props){
 
     return (
         <div className='Playlist'>
-            <Tracklist />
+            <h2>{props.playlistName}</h2>
+            <Tracklist tracks={props.playlistTracks}/>
             <button>
                 SAVE TO SPOTIFY
             </button>
