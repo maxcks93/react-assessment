@@ -25,7 +25,7 @@ function SearchBar(props){
             placeholder= "Enter A Song Title"
             onChange={handleSearchNameChange}
             value={searchName}/>
-            <button onClick={search}>
+            <button className="SearchButton" onClick={search}>
                 SEARCH
             </button>
         </div>

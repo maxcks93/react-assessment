@@ -20,7 +20,7 @@ function Playlist(props){
             tracks={props.playlistTracks}
             isSaved={true}
             onRemove={props.onRemove}/>
-            <button onClick={props.onSave}>
+            <button className="Playlist-save" onClick={props.onSave}>
                 SAVE TO SPOTIFY
             </button>
         </div>
