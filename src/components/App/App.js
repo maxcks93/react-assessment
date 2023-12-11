@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import logo from './logo.svg';
 import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResult from '../SearchResult/SearchResult';
@@ -8,54 +7,12 @@ import Spotify from '../../util/Spotify';
 
 function App() {
 
-  //Hardcode an array of song for testing
-  // const songs = [
-  //   {
-  //     id: 1,
-  //     name: 'Yellow',
-  //     artist: 'Coldplay',
-  //     album: 'Parachutes'
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Bad Day',
-  //     artist: 'Daniel Powter',
-  //     album: 'Daniel Powter'
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'A Thousand Year',
-  //     artist: 'Christina Perri',
-  //     album: 'The Twilight Saga'
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Baby',
-  //     artist: 'Justin Bieber',
-  //     album: 'Baby'
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'My Heart Will Go On',
-  //     artist: 'Christina Perri',
-  //     album: 'Titanic'
-  //   }
-  // ];
-
   // State hook to store search result array
   const [searchResults, setSearchResults] = useState([]);
   // State hook to store the tracks in the playlistTracks array
   const [playlistTracks, setPlaylistTracks] = useState([]);
   // State hook for playlistName to provide customization to user
   const [playlistName, setPlaylistName] = useState('New Playlist')
-
-  // search track function
-  // const searchTrack = useCallback((searchName)=>{
-  //   const foundSong = songs.find(song => song.name === searchName);
-  //   setSearchResults((originalData) => {
-  //     return [...originalData, foundSong];
-  //   });
-  // },[]);
 
   // function to search track in Spotify via track's name
   const searchTrack = useCallback((term) => {
@@ -88,7 +45,7 @@ function App() {
   const savePlaylist = useCallback(() => {
     const trackUris = playlistTracks.map((track) => track.uri);
     Spotify.savePlaylist(playlistName, trackUris).then(() => {
-      setPlaylistName('New Playlist');
+      setPlaylistName("New Playlist");
       setPlaylistTracks([]);
     });
   }, [playlistName, playlistTracks]);
@@ -113,7 +70,6 @@ function App() {
         </div>
       </div>
     </div>
-
   );
 }
 

@@ -20,13 +20,13 @@ function Track(props){
     const renderAction = () => {
         if(!props.isSaved){
             return(
-                <button onClick={addTrack}>
+                <button className="Track-action" onClick={addTrack}>
                     +
                 </button>
             );
         } else{
             return(
-                <button onClick={removeTrack}>
+                <button className="Track-action" onClick={removeTrack}>
                     -
                 </button>
             );
