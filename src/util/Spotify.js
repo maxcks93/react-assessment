@@ -1,47 +1,27 @@
 const clientId = ''; // Insert client ID here.
-const redirectUri = 'http://localhost:3000'; // Add this to your accepted Spotify redirect URIs in your Spotify API.
+//const redirectUri = 'http://localhost:3000'; // Add this to your accepted Spotify redirect URIs in your Spotify API.
+const redirectUri = 'https://jammmingwave.surge.sh/'; // Add this to your accepted Spotify redirect URIs in your Spotify API.
 
 let accessToken;
 
 const Spotify = {
-  async getAccessToken() {
-    // Check if the access token is already available
+  getAccessToken() {
     if (accessToken) {
       return accessToken;
     }
 
-      // To extract access token and expiration time from the URL
-      const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
-      const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
-
-      // If access token and expiration time are present in the URL
-      if (accessTokenMatch && expiresInMatch) {
-        accessToken = accessTokenMatch[1];
-        const expiresIn = Number(expiresInMatch[1]);
-
-        // Calculate the expiration time and store the token in localStorage
-        const expirationTime = Date.now() + expiresIn * 1000;
-        localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('tokenExpiration', expirationTime);
-
-        // Clear the URL parameters
-        window.history.pushState('Access Token', null, '/');
-      } else {
-        // If no access token in the URL, check localStorage for a stored token
-        const storedToken = localStorage.getItem('accessToken');
-        const tokenExpiration = localStorage.getItem('tokenExpiration');
-
-        // If no stored token or the stored token is expired
-        if (!storedToken || Date.now() > tokenExpiration) {
-          // Redirect to Spotify authorization URL
-          const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
-          window.location = accessUrl;
-        }
-
-        accessToken = storedToken;
-      }
-
-    return accessToken;
+    const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
+    const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
+    if (accessTokenMatch && expiresInMatch) {
+      accessToken = accessTokenMatch[1];
+      const expiresIn = Number(expiresInMatch[1]);
+      window.setTimeout(() => accessToken = '', expiresIn * 1000);
+      window.history.pushState('Access Token', null, '/'); // This clears the parameters, allowing us to grab a new access token when it expires.
+      return accessToken;
+    } else {
+      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+      window.location = accessUrl;
+    }
   },
 
   //function to search track from spotify
@@ -91,6 +71,8 @@ const Spotify = {
 
       const createPlaylistJsonResponse = await createPlaylistResponse.json();
       const playlistId = createPlaylistJsonResponse.id;
+      console.log(createPlaylistJsonResponse)
+      console.log(playlistId)
 
       await fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
         headers,
